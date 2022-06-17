@@ -75,7 +75,10 @@ function fiterProductByQualityByFor(listProduct){
 function fiterProductBySaleDateEs6(listProduct){
     var toDay= new Date();
     const listResult= listProduct.filter(element=> element.saleDate.getTime()>toDay.getTime()&& element.isDelete==false);
-    return listResult;
+    const mapResult = listProduct.map(element=>{
+        return element.name;
+    })
+    return mapResult;
 }
 //For:
 function fiterProductBySaleDateEs6(listProduct){
@@ -140,11 +143,9 @@ function isHaveProductInCategory(listProduct, categoryId){
 function fiterProductBySaleDateByES6(listProduct){
     var toDay= new Date();
     const list= listProduct.filter(element=> element.saleDate.getTime()>toDay.getTime()&& element.quality>0);
-    var arrayResult = [];
-    list.forEach(element=>{
-        arrayResult[arrayResult.length]= {id: element.id, name: element.name};
+    const mapResult= list.map(element=>{
+        return {id : element.id, name : element.name};
     });
-    return arrayResult;
 }
 //For
 function fiterProductBySaleDate(listProduct){
